@@ -1,30 +1,21 @@
-# ArdorPi
+# Blue0x Pi
 
-![ArdorPi Dashboard](https://github.com/mrv777/ArdorPi/raw/master/ardorPiScreen.png)
+![ArdorPi Dashboard](https://github.com/05259/BLXPi/blob/master/BLXPiScreen.png)
 
-## RaspberryPi Image with Ardor preinstalled
-- Ardor already installed and bootstrapped
+## RaspberryPi Image with Blue0x preinstalled
+- Blue0x already installed and bootstrapped
 - Node set as archival and openAPI
-- Starts Ardor up on boot as a service
-- Automatically checks for updates daily and will apply them if found
-- Can build the image yourself customizing some settings and getting newest kernel if you wanted
-- Dashboard with links to wallet, d-Chat, test api page, ardordocs, and update pages
+- Starts Blue0x up on boot as a service
+- Dashboard with links to wallet, test api page and BLX Docs
 
 ### Instructions
-Download here: [Prebuild Image](https://ardor.tools/ardor-raspbian-lite.zip)  
-Flash using [Etcher](https://www.balena.io/etcher/)  
-Boot Pi and you should be able to access the dashboard with http://{{IP of RaspberryPi}}
-
-#### Login
-Username: ardor  
-Password: pi
 
 ## Build yourself
 
 Tested on Ubuntu 18.04.4 LTS
 
 - sudo apt -y install coreutils quilt parted qemu-user-static debootstrap zerofree zip dosfstools bsdtar libcap2-bin grep rsync xz-utils file git curl bc
-- git clone https://github.com/mrv777/pi-gen.git (You could also try the newest version here, but untested: https://github.com/RPi-Distro/pi-gen.git)
+- git clone https://github.com/05259/pi-gen.git (You could also try the newest version here, but untested: https://github.com/RPi-Distro/pi-gen.git)
 - cd pi-gen
-- wget https://github.com/mrv777/ArdorPi/raw/master/ardorpi.sh
-- echo "pi" | sudo bash ./ardorpi.sh (You can change **pi** to whatever password you want to set for the user Ardor)
+- wget https://github.com/05259/BLXPi/blob/master/ardorpi.sh
+- echo "pi" | sudo bash ./blxpi.sh (You can change **pi** to whatever password you want to set for the user BLX)
