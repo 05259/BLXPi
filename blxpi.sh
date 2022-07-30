@@ -115,7 +115,6 @@ cat > 00-run-chroot.sh <<RUN
 uri='\$uri'
 echo "Download and prepare BLX"
 git clone https://github.com/theBlue0x/node.git --show-progress
-unzip -qq ardor-client.zip
 mv node /home/BLX/blx-wallet
 
 echo "" && echo "[INFO] creating BLX mainnet configuration ..."
@@ -124,6 +123,7 @@ echo "${NXT_MAINNET_PROPERTIES_FILE_CONTENT}" > /home/BLX/${BLX_MAINNET_FOLDER}/
 echo "" && echo "[INFO] building financial freedom"
 cd /home/BLX/blx-wallet
 ./compile.sh --show-progress
+
 echo "" && echo "[INFO] cleaning up ..."
 sudo apt autoremove -y
 echo "" && echo "[INFO] creating ardor services ..."
@@ -136,7 +136,7 @@ sudo chown -R BLX:BLX /home/BLX/${BLX_MAINNET_FOLDER}
 echo "" && echo "[INFO] "
 
 echo "" && echo "[INFO] creating dashboard ..."
-wget https://github.com/05259/BLXPi/blob/master/BLXpiDash.zip
+wget https://github.com/05259/BLXPi/blob/main/BLXpiDash.zip
 unzip BLXPiDash.zip -d /var/www/html
 chown www-data:BLX /var/www/html -R
 rm BLXPiDash.zip
