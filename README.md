@@ -1,6 +1,6 @@
 # Blue0x Pi
 
-![ArdorPi Dashboard](https://github.com/05259/BLXPi/blob/master/BLXPiScreen.png)
+![BLXPi Dashboard](https://github.com/05259/BLXPi/blob/master/BLXPiScreen.png)
 
 ## RaspberryPi Image with Blue0x preinstalled
 - Blue0x already installed and bootstrapped
