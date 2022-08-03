@@ -44,7 +44,7 @@ export TARGET_HOSTNAME=blx-pi
 export KEYBOARD_KEYMAP=us
 export KEYBOARD_LAYOUT="English (US)"
 export TIMEZONE_DEFAULT=America/New_York
-export FIRST_USER_NAME=BLX
+export FIRST_USER_NAME=blue0x
 export FIRST_USER_PASS="${pi_pwd}"
 export ENABLE_SSH=1
 EOL
@@ -102,8 +102,8 @@ After=network.target
 [Service]
 RestartSec=2s
 Type=simple
-WorkingDirectory=/home/BLX/${BLX_MAINNET_FOLDER}/
-ExecStart=/bin/bash /home/BLX/${BLX_MAINNET_FOLDER}/run.sh
+WorkingDirectory=/home/blue0x/${BLX_MAINNET_FOLDER}/
+ExecStart=/bin/bash /home/blue0x/${BLX_MAINNET_FOLDER}/run.sh
 Restart=always
 
 [Install]
@@ -114,16 +114,12 @@ cat > 00-run-chroot.sh <<RUN
 #!/bin/bash
 uri='\$uri'
 echo "Download and prepare BLX"
-git clone https://github.com/theBlue0x/node.git --show-progress
-mv node /home/BLX/blx-wallet
-
+git clone https://github.com/theBlue0x/node.git /home/blue0x/blx-wallet
 echo "" && echo "[INFO] creating BLX mainnet configuration ..."
-echo "${NXT_MAINNET_PROPERTIES_FILE_CONTENT}" > /home/BLX/${BLX_MAINNET_FOLDER}/conf/nxt.properties
-
-echo "" && echo "[INFO] building financial freedom"
-cd /home/BLX/blx-wallet
-./compile.sh --show-progress
-
+echo "${NXT_MAINNET_PROPERTIES_FILE_CONTENT}" > /home/blue0x/${BLX_MAINNET_FOLDER}/conf/nxt.properties
+#echo "" && echo "[INFO] Building financial freedom"
+#cd /home/BLX/blx-wallet
+#./compile.sh --show-progress
 echo "" && echo "[INFO] cleaning up ..."
 sudo apt autoremove -y
 echo "" && echo "[INFO] creating ardor services ..."
@@ -132,13 +128,13 @@ echo "${BLX_MAINNET_SERVICE_FILE_CONTENT}" | sudo tee /etc/systemd/system/${BLX_
 sudo systemctl enable ${BLX_MAINNET_SERVICE}.service
 
 echo "" && echo "[INFO] setting ownership of BLX folders ..."
-sudo chown -R BLX:BLX /home/BLX/${BLX_MAINNET_FOLDER}
+sudo chown -R blue0x:blue0x /home/blue0x/${BLX_MAINNET_FOLDER}
 echo "" && echo "[INFO] "
 
 echo "" && echo "[INFO] creating dashboard ..."
 wget https://github.com/05259/BLXPi/blob/main/BLXpiDash.zip
 unzip BLXPiDash.zip -d /var/www/html
-chown www-data:BLX /var/www/html -R
+chown www-data:blue0x /var/www/html -R
 rm BLXPiDash.zip
 mv /etc/nginx/sites-available/default /home/BLX/nginxBackup
 echo "
